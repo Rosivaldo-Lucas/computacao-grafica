@@ -4,6 +4,16 @@
 
 #include "definitions.h"
 
+// estrutura para encapsular os dados da coordenada e cores do ponto
+typedef struct Ponto Ponto;
+struct Ponto {
+  int x;
+  int y;
+  int R;
+  int G;
+  int B;
+};
+
 //-----------------------------------------------------------------------------
 void MyGlDraw(void);
 
@@ -13,3 +23,7 @@ void MyGlDraw(void);
 
 void PutPixel(void);
 void DrawLine(void);
+
+void myPutPixel(Ponto p);
+void myDrawLine(Ponto pi, Ponto pf);
+void myDrawTriangle(Ponto pa, Ponto pb, Ponto pc);

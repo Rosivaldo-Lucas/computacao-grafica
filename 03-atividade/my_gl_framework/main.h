@@ -10,8 +10,7 @@ GLuint tex;
 void (*DrawFunc)(void);
 
 //*****************************************************************************
-void display(void)
-{
+void display(void) {
 	DrawFunc();
 
 	// Copia o framebuffer para a textura.
@@ -44,14 +43,13 @@ void display(void)
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glDisable(GL_TEXTURE_2D);
 
-	glFlush();
+	glFlush();	
 	glutSwapBuffers();
 	glutPostRedisplay();
 }
 
 //*****************************************************************************
-void exitprog(void)
-{
+void exitprog(void) {
 	// Libera a memória referente ao framebuffer.
 	if (!FBptr)
 		delete [] FBptr;
@@ -60,8 +58,7 @@ void exitprog(void)
 }
 
 //*****************************************************************************
-void InitOpenGL(int *argc, char **argv)
-{
+void InitOpenGL(int *argc, char **argv) {
 	glutInit(argc,argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
 	glutInitWindowSize(IMAGE_WIDTH, IMAGE_HEIGHT);
@@ -77,20 +74,17 @@ void InitOpenGL(int *argc, char **argv)
 }
 
 //*****************************************************************************
-void InitCallBacks(void)
-{
+void InitCallBacks(void) {
 	atexit( exitprog );
 	glutDisplayFunc(display);
 }
 
 //*****************************************************************************
-void InitDataStructures(void)
-{
+void InitDataStructures(void) {
 	// Aloca o framebuffer e inicializa suas posições com 0.
 	FBptr = new unsigned char[IMAGE_WIDTH * IMAGE_HEIGHT * 5];
 	
-	for (unsigned int i = 0; i < IMAGE_WIDTH * IMAGE_HEIGHT ; i++)
-	{
+	for (unsigned int i = 0; i < IMAGE_WIDTH * IMAGE_HEIGHT ; i++) {
 		FBptr[i*4]   = 0;
 		FBptr[i*4+1] = 0;
 		FBptr[i*4+2] = 0;
